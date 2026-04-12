@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:juntos/pages/button_styles.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -16,7 +17,7 @@ class HomePage extends StatelessWidget {
         
         leading: IconButton(style: buttonStyles.secondary, onPressed: () {}, icon: const Icon(Icons.arrow_back),),
         
-        title: Text("Activities", style: TextStyle(fontSize: 18),),
+        title: Text("Activities", style: TextStyle(fontSize: 18, fontWeight: FontWeight(800)),),
         actions: [
           SizedBox(width: 24,),
           IconButton(style: buttonStyles.secondary, onPressed: () {}, icon: const Icon(Icons.search),),
@@ -24,33 +25,6 @@ class HomePage extends StatelessWidget {
           IconButton(style: buttonStyles.primary, onPressed: () {}, icon: const Icon(Icons.add)),
         ],
       ),
-    );
-  }
-}
-
-class AppButtonStyles extends ThemeExtension<AppButtonStyles> {
-  final ButtonStyle? primary;
-  final ButtonStyle? secondary;
-
-  const AppButtonStyles({
-    required this.primary,
-    required this.secondary,
-  });
-
-  @override
-  AppButtonStyles copyWith({ButtonStyle? primary, ButtonStyle? secondary}) {
-    return AppButtonStyles(
-      primary: primary ?? this.primary,
-      secondary: secondary ?? this.secondary,
-    );
-  }
-
-  @override
-  AppButtonStyles lerp(ThemeExtension<AppButtonStyles>? other, double t) {
-    if (other is! AppButtonStyles) return this;
-    return AppButtonStyles(
-      primary: ButtonStyle.lerp(primary, other.primary, t),
-      secondary: ButtonStyle.lerp(secondary, other.secondary, t),
     );
   }
 }
