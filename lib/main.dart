@@ -39,7 +39,8 @@ class MyApp extends StatelessWidget {
         ],
         fontFamily: "AvenirLT",
       ),
-      home: Playground(),
+      // home: Playground(),
+      home: HomePage(),
     );
   }
 }

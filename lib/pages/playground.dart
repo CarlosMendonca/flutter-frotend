@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:juntos/pages/button_styles.dart';
+import 'package:juntos/widgets/fairpay_list_item2.dart';
 
 class Playground extends StatelessWidget {
   const Playground({super.key});
@@ -13,7 +14,19 @@ class Playground extends StatelessWidget {
         children: [
           FairpayListItem1(),
           const SizedBox(height: 16),
-          FairpayListItem2(),
+          const FairpayListItem2(
+            name: "Carlos Mendonça text text text text text",
+            description: "Lorem ipsum dolor sit amet text text text text text text text text text text text text text",
+            amount: 20.00,
+            currency: Currency.usd,
+          ),
+          const SizedBox(height: 16),
+          const FairpayListItem2(
+            name: "Carlos Mendonça text text text text text",
+            description: "Lorem ipsum dolor sit amet text text text text text text text text text text text text text",
+            amount: -2000.00,
+            currency: Currency.jpy,
+          ),
         ],
       ),
     );
@@ -79,7 +92,7 @@ class FairpayListItem1 extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(width: 16),
-                          GestureDetector(
+                          GestureDetector( // TODO: should it be TapRegion?
                             behavior: HitTestBehavior
                                 .opaque, // Ensures the empty space between icon and text is tappable
                             onTap: () {
@@ -97,6 +110,13 @@ class FairpayListItem1 extends StatelessWidget {
                                 children: [
 
                                   // 2. The Dynamic-Width TextField
+                                  const Text(
+                                    "EUR ",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
                                   IntrinsicWidth(
                                     child: TextField(
                                       focusNode: _focusNode,
@@ -113,11 +133,6 @@ class FairpayListItem1 extends StatelessWidget {
                                         contentPadding: EdgeInsets.zero,
                                         border: InputBorder.none,
                                         hintText: "0.00",
-                                        prefixText: "\$ ",
-                                        prefixStyle: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w700,
-                                        ),
                                       ),
                                     ),
                                   ),
@@ -160,70 +175,3 @@ class FairpayListItem1 extends StatelessWidget {
   }
 }
 
-class FairpayListItem2 extends StatelessWidget {
-  const FairpayListItem2({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SizedBox(width: 32),
-        //Checkbox(value: true, onChanged: null),
-        //SizedBox(width: 18),
-        Expanded(
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(12)),
-              color: Colors.white,
-            ),
-
-            child: Row(
-              children: [
-                SizedBox(width: 16),
-                Padding(
-                  padding: EdgeInsets.only(top: 16, bottom: 16),
-                  child: CircleAvatar(
-                    backgroundColor: const Color(
-                      0xFFFFCA62,
-                    ), // Your primary yellow
-                    radius:
-                        24, // This makes the total diameter 40px, matching your buttons
-
-                    child: const FlutterLogo(size: 48),
-                  ),
-                ),
-                SizedBox(width: 16),
-
-                Column(
-                  children: [
-                    Text("data"),
-                    Text("data2"),
-                    /*
-                    Expanded(
-                      child: Text(
-                        "Carlos Mendonça",
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
-                    ),
-                    SizedBox(width: 16),
-                    Text(
-                      "\$20.00",
-                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
-                    ),
-                    SizedBox(width: 8),
-                    Icon(Icons.edit, size: 16, color: const Color(0xFFFFCA62)),*/
-                  ],
-                ),
-
-                SizedBox(width: 24),
-              ],
-            ),
-          ),
-        ),
-        SizedBox(width: 32),
-      ],
-    );
-  }
-}

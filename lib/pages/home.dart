@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:juntos/pages/button_styles.dart';
+import 'package:juntos/widgets/fairpay_form_field.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -24,6 +25,15 @@ class HomePage extends StatelessWidget {
           SizedBox(width: 24,),
           IconButton(style: buttonStyles.primary, onPressed: () {}, icon: const Icon(Icons.add)),
         ],
+      ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            FairpayFormField(label: 'FULL NAME'),
+          ],
+        ),
       ),
     );
   }
