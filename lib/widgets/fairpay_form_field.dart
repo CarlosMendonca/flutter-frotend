@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class FairpayFormField extends StatelessWidget {
+class FairpayFormField extends StatefulWidget {
   const FairpayFormField({
     super.key,
     required this.label,
@@ -9,22 +9,47 @@ class FairpayFormField extends StatelessWidget {
   final String label;
 
   @override
+  State<FairpayFormField> createState() => _FairpayFormFieldState();
+}
+
+class _FairpayFormFieldState extends State<FairpayFormField> {
+  final _focusNode = FocusNode();
+  bool _hasFocus = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode.addListener(() {
+      setState(() => _hasFocus = _focusNode.hasFocus);
+    });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label),
+        Text(widget.label),
         const SizedBox(height: 12),
         DecoratedBox(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: Colors.white,
-            border: Border.fromBorderSide(BorderSide(color: Colors.black, width: 2)),
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+            border: _hasFocus
+                ? const Border.fromBorderSide(BorderSide(color: Colors.black, width: 2))
+                : null,
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
           ),
-          child: const Padding(
-            padding: EdgeInsets.all(16),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
             child: TextField(
-              decoration: InputDecoration.collapsed(hintText: ''),
+              focusNode: _focusNode,
+              decoration: const InputDecoration.collapsed(hintText: ''),
             ),
           ),
         ),

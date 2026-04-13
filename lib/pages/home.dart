@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:juntos/pages/button_styles.dart';
+import 'package:juntos/widgets/fairpay_form_button.dart';
 import 'package:juntos/widgets/fairpay_form_field.dart';
 
 class HomePage extends StatelessWidget {
@@ -32,6 +33,10 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FairpayFormField(label: 'FULL NAME'),
+            SizedBox(height: 16),
+            FairpayFormField(label: 'EMAIL/PHONE NUMBER'),
+            SizedBox(height: 16),
+            FairpayFormButton(label: 'Enabled', onPressed: () {}),
           ],
         ),
       ),
