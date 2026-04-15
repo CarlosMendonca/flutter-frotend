@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:juntos/pages/home.dart';
 import 'package:juntos/pages/home_dark.dart';
 import 'package:juntos/pages/button_styles.dart';
-import 'package:juntos/pages/playground.dart';
+import 'package:juntos/pages/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,12 +35,16 @@ class MyApp extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
+            ghost: TextButton.styleFrom(
+              backgroundColor: Colors.transparent,
+              foregroundColor: Colors.black,
+            ),
           ),
         ],
         fontFamily: "AvenirLT",
       ),
       // home: Playground(),
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }

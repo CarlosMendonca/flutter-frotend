@@ -4,17 +4,20 @@ import 'package:flutter/material.dart';
 class AppButtonStyles extends ThemeExtension<AppButtonStyles> {
   final ButtonStyle? primary;
   final ButtonStyle? secondary;
+  final ButtonStyle? ghost;
 
   const AppButtonStyles({
     required this.primary,
     required this.secondary,
+    required this.ghost,
   });
 
   @override
-  AppButtonStyles copyWith({ButtonStyle? primary, ButtonStyle? secondary}) {
+  AppButtonStyles copyWith({ButtonStyle? primary, ButtonStyle? secondary, ButtonStyle? ghost}) {
     return AppButtonStyles(
       primary: primary ?? this.primary,
       secondary: secondary ?? this.secondary,
+      ghost: ghost ?? this.ghost,
     );
   }
 
@@ -24,6 +27,7 @@ class AppButtonStyles extends ThemeExtension<AppButtonStyles> {
     return AppButtonStyles(
       primary: ButtonStyle.lerp(primary, other.primary, t),
       secondary: ButtonStyle.lerp(secondary, other.secondary, t),
+      ghost: ButtonStyle.lerp(ghost, other.ghost, t),
     );
   }
 }
